@@ -37,6 +37,19 @@ a {
 }
 
 /**
+ Qualitative modifiers for deltas (increases/decreases)
+ Note that a positive delta (e.g. +0.25%) may be a *bad* thing
+ */
+ .delta-bad {
+ 	color:#cb3200;
+ }
+ .delta-good {
+ 	color:#090;
+ }
+ .delta-neutral {
+ }
+
+/**
  Spacing helpers
  */
 .prm {
@@ -85,16 +98,6 @@ a {
 	text-align:left;
 }
 
-/**
- Table modifier: .left-normal-rest-bold
- Visual: table body left column font normal, other bold.
- */
-.left-normal-rest-bold td {
-	font-weight:bold;
-} 
-.left-normal-rest-bold td:first-child {
-	font-weight:normal;
-}
 
 /**
  Table modifier: .left-33
