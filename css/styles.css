@@ -5,6 +5,7 @@ body {
 	background:#f6f6f6;
 	font-family:arial,sans-serif;
 	font-size:12px;
+	-webkit-text-size-adjust:100%; /* http://www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/ */
 	line-height:1.3;
 	margin:0;
 	padding:0;
@@ -83,7 +84,39 @@ a {
 	overflow:visible;
 }
 
-/** MODULES AND BLOCKS **/
+
+/** RESPONSIVE MODIFIERS **/
+
+/* small: < 480, medium: 480 - 639, large: >= 640 */
+
+/* @media incapable-browser { */
+	.r-block-below-medium {
+		display:none;
+	}
+	.r-hide-below-medium {
+		display:block;
+	}
+/* } */
+@media screen and (max-width:479px) {
+	.r-block-below-medium {
+		display:block;
+	}
+	.r-hide-below-medium {
+		display:none;
+	}
+}
+@media screen and (min-width:480px) {
+	.r-block-below-medium {
+		display:none;
+	}
+	.r-hide-below-medium {
+		display:block;
+	}
+}
+
+
+/** TABLE MODIFIERS **/
+
 
 /**
  Table modifier: .left-left-rest-center
@@ -140,6 +173,10 @@ a {
 	background-color:#efefef;
 }
 
+
+/** MODULES **/
+
+
 /**
  Tab content container
  Visual: white contents, grey border, veeerrrry subtle box shadow
@@ -174,6 +211,10 @@ a {
 	padding:5px;
 	margin-bottom:20px;
 }
+
+
+/** FORMS **/
+
 
 /**
  Text input fields
