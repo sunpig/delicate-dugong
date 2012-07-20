@@ -1,0 +1,4 @@
+Please build out the following mini-mockup (a small snippet of a much larger page) in the png attached. The result should:
+* Work in IE6+ and the latest version of all other major browsers
+* Use CSS3 whenever possible and degrade nicely for browsers that do not support advanced features
+* Take into account accessibility, performance, and maintainability
