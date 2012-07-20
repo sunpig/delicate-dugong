@@ -96,6 +96,16 @@ a {
 	font-weight:normal;
 }
 
+/**
+ Table modifier: .left-33
+ Visual: table body left column gets 33% of table width
+ */
+.left-33 th:first-child,
+.left-33 td:first-child {
+	width:33%;
+}
+
+
 /** 
  Table modifier: .stripy
  Visual: 
