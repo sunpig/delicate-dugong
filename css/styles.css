@@ -7,7 +7,7 @@ body {
 	font-size:12px;
 	-webkit-text-size-adjust:100%; /* http://www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/ */
 	line-height:1.3;
-	margin:0;
+	margin:0 10px;
 	padding:0;
 }
 table {
@@ -79,11 +79,6 @@ a {
     *zoom: 1;
 }
 
-.page {
-	margin:0 10px;
-	overflow:visible;
-}
-
 
 /** RESPONSIVE MODIFIERS **/
 
@@ -126,7 +121,9 @@ a {
 .left-left-rest-center td {
 	text-align:center;
 } 
+.left-left-rest-center th.first-child,
 .left-left-rest-center th:first-child,
+.left-left-rest-center td.first-child,
 .left-left-rest-center td:first-child {
 	text-align:left;
 }
@@ -136,7 +133,9 @@ a {
  Table modifier: .left-33
  Visual: table body left column gets 33% of table width
  */
+.left-33 th.first-child,
 .left-33 th:first-child,
+.left-33 td.first-child,
 .left-33 td:first-child {
 	width:33%;
 }
@@ -169,6 +168,7 @@ a {
 	padding:7px 20px 8px;
 	border-bottom:1px solid #efefef;  /*border-bottom separator for browsers without nth-child support */
 }
+.stripy tbody tr.first-child td,
 .stripy tbody tr:first-child td {
 	border-top:1px solid #ccc;
 	padding-top:8px;
@@ -193,8 +193,9 @@ a {
 	border-radius:5px;
 	border:1px solid #ccc;
 	box-shadow:0 0 0 1px #ededed;
-	padding:10px;
-	padding-bottom:30px;
+	padding:10px 10px 30px;
+	margin-bottom:20px;
+	position:relative;
 }
 /* Max-width media query so that capable browsers can use a wee bit more
 space left and right at small widths */
@@ -218,6 +219,137 @@ space left and right at small widths */
 	text-align:center;
 	padding:5px;
 	margin-bottom:20px;
+}
+
+
+/** TAB ALIGNMENT **/
+/**
+ Initial markup (no js)
+ <div class="tb-trigger-skin-alpha">
+	 <ul class="tab-triggers-vertical">
+	 	<li><a href="#one">One</a></li>
+	 	<li><a href="#two">Two</a></li>
+	 	<li><a href="#three">Three</a></li>
+	 </ul>
+ </div>
+ <div class="tab-target" id="one"></div>
+ <div class="tab-target" id="two"></div>
+ <div class="tab-target" id="three"></div>
+
+ JS-activated markup:
+ <div class="tb-trigger-skin-alpha">
+	 <ul class="tab-triggers-strip">
+	 	<li class="js-active"><a href="#one">One</a></li>
+	 	<li class="js-dormant"><a href="#two">Two</a></li>
+	 	<li class="js-dormant"><a href="#three">Three</a></li>
+	 </ul>
+ </div>
+ <div class="tab-target js-active" id="one"></div>
+ <div class="tab-target js-dormant" id="two"></div>
+ <div class="tab-target js-dormant" id="three"></div>
+
+Visual: 
+ + ul.tab-triggers represents a simple vertical list of links
+ + ul.tab-triggers-strip on wide screens is a classic tab strip
+ + ul.tab-triggers-strip on narrow screens is a single tab button atop the tab targets
+
+Behaviour:
+ + Initial HTML should start with ul.tab-triggers-vertical
+ + If JS is available, JS init will replace the .tab-triggers class with .tab-triggers-strip
+ + On wide screens, clicking a tab trigger will toggle the active tab
+ + On narrow screens, clicking a tab trigger will temporarily turn the .tab-triggers-strip
+   back into a vertical .tab-triggers list. After selecting an item, .tab-triggers-strip is restored.
+ */
+.tab-triggers-vertical,
+.tab-triggers-strip {
+	padding:0;
+	margin:0;
+}
+.tab-triggers-vertical li,
+.tab-triggers-strip li {
+	list-style-type:none;
+	padding:0;
+}
+.tab-triggers-vertical a,
+.tab-triggers-strip a {
+	display:block;
+}
+
+.tab-triggers-vertical {
+	float:left;
+	overflow:hidden;
+	margin-bottom:10px;
+}
+.tab-triggers-vertical li {
+	display:inline;
+	margin:0;
+}
+
+.tab-triggers-strip li {
+	float:left;
+	margin:0 4px 0 0;
+}
+
+
+/** TAB SKIN **/
+
+
+.tab-trigger-skin-alpha .tab-triggers-strip {
+	margin-left:7px;
+	position:relative;
+	z-index:1;
+	top:1px;
+	zoom:1;
+}
+.tab-trigger-skin-alpha .tab-triggers-vertical {
+	border-radius:5px;
+	border:1px solid #ccc;
+	box-shadow:0 0 0 1px #eee outset;
+}
+.tab-trigger-skin-alpha .tab-triggers-strip li {
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	border:1px solid #ccc;
+	box-shadow:0 1px 0 1px #fff inset;
+	box-shadow:0 0 0 1px #eee outset;
+}
+.tab-trigger-skin-alpha .tab-triggers-strip li {
+	/*border-bottom:none;*/
+}
+.tab-trigger-skin-alpha .tab-triggers-strip li.js-active {
+	border-bottom:1px solid white;
+}
+.tab-trigger-skin-alpha a {
+	background: #e9e9e9;
+	font-size:14px;
+	font-weight:bold;
+	color:#0054a6;
+	text-shadow:0 1px 0 #fff;
+	padding:6px 8px;
+	margin-left:1px;
+	margin-right:1px;
+}
+.tab-trigger-skin-alpha .tab-triggers-strip li.js-active a {
+	background:white;
+}
+.tab-trigger-skin-alpha .tab-triggers-vertical a {
+	border-top:1px solid #ccc;
+}
+.tab-trigger-skin-alpha .tab-triggers-vertical li.first-child a {
+	border-top-left-radius:4px;
+	border-top-right-radius:4px;
+	border-top:none;
+	margin-top:1px;
+}
+.tab-trigger-skin-alpha .tab-triggers-vertical li.last-child a {
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
+	margin-bottom:1px;
+}
+.tab-trigger-skin-alpha .tab-triggers-strip a {
+	border-top-left-radius:4px;
+	border-top-right-radius:4px;
+	margin:1px 1px 0 1px;
 }
 
 
