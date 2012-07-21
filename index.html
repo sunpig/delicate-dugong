@@ -9,6 +9,7 @@
 	<body>
 		<div class="page">
 			<h1>Delicate Dugong</h1>
+			<div id="currentTabTitlePlaceholder"></div>
 
 			<div class="cf tab-trigger-skin-alpha">
 				<ul class="tab-triggers-vertical">
@@ -21,7 +22,7 @@
 				</ul>
 			</div>
 
-<br style="clear:both" />
+<!--
 
 			<div class="cf tab-trigger-skin-alpha">
 				<ul class="tab-triggers-strip">
@@ -33,6 +34,7 @@
 					<li class="last-child js-dormant"><a href="#tabContentMortgageAdvice">Mortgage Advice</a></li>
 				</ul>
 			</div>
+-->
 
 			<div class="cf mod-tab-content tab-target" id="tabContentHomeLoans"><h2>Home Loans</h2></div>
 			<div class="cf mod-tab-content tab-target" id="tabContentMortgages"><h2>Mortgages</h2></div>
@@ -135,5 +137,45 @@
 					cucumber courgette. <a href="http://veggieipsum.com/">click here</a></p>
 			</div>
 		</div>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>
+/*
+ Quick & dirty tabs implementation
+ */
+(function(){
+	'use strict';
+
+	var onTabTriggerClick = function(e) {
+		var $tabTrigger = $(e.target);
+		var $link, $li, $tabTarget, isCurrentTab, $tabTitle;
+		$tabTrigger.parents('ul').find('a').each(function(ix, el){
+			$link = $(el);
+			$li = $link.parent();
+			$tabTarget = $($link.attr('href'));
+			isCurrentTab = ($tabTrigger[0]===$link[0]);
+
+			$li.toggleClass('js-active', isCurrentTab).toggleClass('js-dormant', !isCurrentTab);
+			$tabTarget.toggle(isCurrentTab);
+			if (isCurrentTab) {
+				$tabTitle = $tabTarget.find('h2').first();
+				$('#currentTabTitlePlaceholder').html($tabTitle.clone().show());
+				$tabTitle.hide();
+			}
+		});
+		e.preventDefault();
+	}
+
+	var init = function() {
+		$('ul.tab-triggers-vertical')
+			.removeClass('tab-triggers-vertical')
+			.addClass('tab-triggers-strip')
+			.on('click', 'a', onTabTriggerClick)
+			.find('a[href=#tabContentTrends]').first().click();
+	}
+
+	init();
+
+})();
+</script>
 	</body>
 </html>
