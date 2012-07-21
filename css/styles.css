@@ -145,15 +145,18 @@ a {
 /** 
  Table modifier: .stripy
  Visual: 
-  + even rows get light grey background
   + header row gets slightly darker grey background
   + header row gets inset top & bottom border effect
+  + even rows get light grey background; browsers without nth-child just get a line separator between rows
  */
 .stripy {
 	border-collapse:separate;
 	border-spacing:0;
 	border-top:1px solid #ccc;
 	border-bottom:1px solid #ccc;
+}
+.stripy tr:nth-child(even) {
+	background-color:#efefef;
 }
 .stripy th {
 	background-color:#e9e9e9;
@@ -164,13 +167,17 @@ a {
 }
 .stripy td {
 	padding:7px 20px 8px;
+	border-bottom:1px solid #efefef;  /*border-bottom separator for browsers without nth-child support */
 }
 .stripy tbody tr:first-child td {
 	border-top:1px solid #ccc;
 	padding-top:8px;
 }
-.stripy tr:nth-child(even) {
-	background-color:#efefef;
+.stripy tr:nth-child(odd) td {
+	border-bottom-width:0; /* kill unnecessary border for browsers with nth-child support */
+}
+.stripy tr:nth-child(even) td {
+	border-bottom-width:0; /* kill unnecessary border for browsers with nth-child support */
 }
 
 
