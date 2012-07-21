@@ -190,20 +190,21 @@ a {
  */
 .mod-tab-content {
 	background:#fff;
-	border-top:1px solid #ccc;
-	border-bottom:1px solid #ccc;
-	margin-left:-10px;
-	margin-right:-10px;
+	border-radius:5px;
+	border:1px solid #ccc;
+	box-shadow:0 0 0 1px #ededed;
 	padding:10px;
 	padding-bottom:30px;
 }
-@media all and (min-width:481px) {
+/* Max-width media query so that capable browsers can use a wee bit more
+space left and right at small widths */
+@media all and (max-width:480px) {
 	.mod-tab-content {
-		border-radius:5px;
-		border:1px solid #ccc;
-		box-shadow:0 0 0 1px #ededed;
-		margin-left:0;
-		margin-right:0;
+		border-radius:0;
+		border-left:none;
+		border-right:none;
+		margin-left:-10px;
+		margin-right:-10px;
 	}
 }
 
