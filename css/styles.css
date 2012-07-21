@@ -331,7 +331,7 @@ Behaviour:
 	margin-left:1px;
 	margin-right:1px;
 }
-.tab-trigger-skin-alpha .tab-triggers-strip li.js-active a {
+.tab-trigger-skin-alpha li.js-active a {
 	background:white;
 }
 .tab-trigger-skin-alpha .tab-triggers-vertical a {
