@@ -146,8 +146,29 @@
 	'use strict';
 
 	var onTabTriggerClick = function(e) {
+
 		var $tabTrigger = $(e.target);
+		var $ul = $tabTrigger.parents('ul').first();
+
+		// Activated from vertical mode?
+		if ($ul.hasClass('tab-triggers-vertical')) {
+			activateTab($tabTrigger);
+			setStrip($ul);
+		} else {
+			// Check whether we're in classic or small-screen mode
+			var smallscreen = $ul.find('.js-dormant').first().css('display') == 'none';
+			if (smallscreen) {
+				setVertical($ul);
+			} else {
+				activateTab($tabTrigger);
+			}
+		}
+		e.preventDefault();
+	}
+
+	var activateTab = function($tabTrigger) {
 		var $link, $li, $tabTarget, isCurrentTab, $tabTitle;
+
 		$tabTrigger.parents('ul').find('a').each(function(ix, el){
 			$link = $(el);
 			$li = $link.parent();
@@ -162,15 +183,26 @@
 				$tabTitle.hide();
 			}
 		});
-		e.preventDefault();
+	}
+
+	var setStrip = function($ul) {
+		$ul.removeClass('tab-triggers-vertical').addClass('tab-triggers-strip');
+	}
+
+	var setVertical = function($ul) {
+		$ul.removeClass('tab-triggers-strip').addClass('tab-triggers-vertical');
 	}
 
 	var init = function() {
-		$('ul.tab-triggers-vertical')
-			.removeClass('tab-triggers-vertical')
-			.addClass('tab-triggers-strip')
-			.on('click', 'a', onTabTriggerClick)
-			.find('a[href=#tabContentTrends]').first().click();
+		var $tabTriggersLists = $('ul.tab-triggers-vertical');
+
+		// Activate js functionality for tab triggers
+		$tabTriggersLists.each(function(ix, el){
+			setStrip($(el));
+		}).on('click', 'a', onTabTriggerClick);
+		
+		// Show the Rate Trends tab first
+		activateTab($tabTriggersLists.find('a[href=#tabContentTrends]').first());
 	}
 
 	init();
