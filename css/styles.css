@@ -1,10 +1,12 @@
 /**
  * Base global styles
  */
-body {
-	background:#f6f6f6;
+body, button {
 	font:13px/1.231 arial,helvetica,clean,sans-serif;
 	-webkit-text-size-adjust:100%; /* http://www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/ */
+}
+body {
+	background:#f6f6f6;
 	line-height:1.3;
 	margin:0 10px;
 	padding:0;
@@ -13,6 +15,10 @@ table {
 	width:100%;
 	font-size:inherit;
 	font:100%;
+}
+form {
+	margin:0;
+	padding:0;
 }
 
 /**
@@ -34,6 +40,7 @@ h3, .h3 {
 	font-size:100%;
 	font-weight:bold;
 	text-shadow:0 1px 0 #fff;
+	text-transform: uppercase;
 }
 .f-m-beta {
 	color:#0054a6;
@@ -237,7 +244,9 @@ space left and right at small widths */
 }
 
 
-/** TAB ALIGNMENT **/
+/** TAB STRUCTURE **/
+
+
 /**
  Initial markup (no js)
  <div class="tb-trigger-skin-alpha">
@@ -398,10 +407,24 @@ input {
 }
 
 /**
- Button style alpha
- Visual: rounded corners, gold gradient, ALL-CAPS
+ Button markup:
+ <span class="button-wrapper button-skin-alpha"><button><span class="f-l">click me</span></button></span>
+ Visual:
+  + button styling REMOVED from button element itself.
+  + button skin applied on outer span
+  + font size & effects applied on inner span, using font style classes
  */
-.btn-alpha {
+.button-wrapper button {
+	border:none;
+	margin:0;
+	padding:0;
+	background:transparent;
+}
+/**
+ Button style alpha
+ Visual: rounded corners, gold gradient.
+ */
+.button-skin-alpha {
 	border-radius:5px;
 	border-top:1px solid #f0c377;
 	border-left:1px solid #f0c377;
@@ -416,6 +439,11 @@ input {
 	background: -ms-linear-gradient(top,  #f7ecca 0%,#e6c674 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #f7ecca 0%,#e6c674 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7ecca', endColorstr='#e6c674',GradientType=0 ); /* IE6-9 */
-	text-transform:uppercase;
-	padding:5px 10px;
+	padding:7px 0;
+	*padding:0 0; /* IE6/7 */
+	zoom:1; /* IE6/7 */
+}
+.button-skin-alpha button {
+	padding:7px 8px;
+
 }

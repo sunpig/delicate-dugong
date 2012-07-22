@@ -98,11 +98,13 @@
 				</table>
 				<div class="cf mod-table-appendix">
 					<form>
-						<span class="h3 prm">Check rates in another area</span>
-						<span class="nobr">
+						<!--[if lte IE 7]><table style="width:auto;display:inline;"><tr><td><![endif]-->
+							<span class="h3 prm nobr">Check rates in another area</span>
+						<!--[if lte IE 7]></td><td><![endif]-->
 							<input type="text" placeholder="San Francisco" value="" />
-							<button type="submit" class="btn-alpha f-m-alpha">Check</button>
-						</span>
+						<!--[if lte IE 7]></td><td><![endif]-->
+							<span class="button-wrapper button-skin-alpha"><button type="submit"><span class="f-m-alpha">Check</span></button></span>
+						<!--[if lte IE 7]></td></tr></table><![endif]-->
 					</form>
 				</div>
 
