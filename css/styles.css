@@ -72,6 +72,39 @@ a {
  }
  .delta-neutral {
  }
+ .delta-good,
+ .delta-bad {
+ 	position:relative;
+ 	padding-left:12px;
+ }
+ .delta-neutral abbr {
+ 	border-bottom:none;
+ }
+ .delta-good abbr,
+ .delta-bad abbr {
+ 	text-indent:100%;
+ 	white-space:nowrap;
+ 	overflow:hidden;
+ 	position:absolute;
+ 	left:0;
+ 	top:2px;
+ 	width:9px;
+ 	height:12px;
+ 	background:url(../img/icons.png) no-repeat 0 0;
+ 	border-bottom:none;
+ }
+ .delta-bad .up {
+ 	background-position:0 0px;
+ }
+ .delta-bad .down {
+ 	background-position:0 -30px;
+ }
+ .delta-good .up {
+ 	background-position:0 -60px;
+ }
+ .delta-good .down {
+ 	background-position:0 -90px;
+ }
 
 /**
  Spacing helpers
@@ -380,7 +413,12 @@ Behaviour:
 		display:none;
 	}
 	.tab-trigger-skin-alpha .tab-triggers-strip li.js-active a:after {
-		content:" v ";
+		content:"";
+		display:inline-block;
+		width:9px;
+		height:12px;
+		background:url(../img/icons.png) no-repeat 0 -115px;
+		margin-left:3px;
 	}
 }
 
