@@ -8,8 +8,7 @@
 	</head>
 	<body>
 		<div class="page">
-			<h1>Delicate Dugong</h1>
-			<div id="currentTabTitlePlaceholder"></div>
+			<h1>Rate Trends</h1>
 
 			<div class="cf tab-trigger-skin-alpha">
 				<ul class="tab-triggers-vertical">
@@ -42,7 +41,6 @@
 			<div class="cf mod-tab-content tab-target" id="tabContentCalculators"><h2>Calculators</h2></div>
 			<div class="cf mod-tab-content tab-target tab-target-active" id="tabContentMortgageAdvice"><h2>Mortgage Advice</h2></div>
 			<div class="cf mod-tab-content tab-target" id="tabContentTrends">
-				<h2>Rate Trends</h2>
 				<table class="stripy left-left-rest-center left-33" cellspacing="0">
 					<thead>
 						<tr>
@@ -167,7 +165,7 @@
 	}
 
 	var activateTab = function($tabTrigger) {
-		var $link, $li, $tabTarget, isCurrentTab, $tabTitle;
+		var $link, $li, $tabTarget, isCurrentTab;
 
 		$tabTrigger.parents('ul').find('a').each(function(ix, el){
 			$link = $(el);
@@ -177,11 +175,6 @@
 
 			$li.toggleClass('js-active', isCurrentTab).toggleClass('js-dormant', !isCurrentTab);
 			$tabTarget.toggle(isCurrentTab);
-			if (isCurrentTab) {
-				$tabTitle = $tabTarget.find('h2').first();
-				$('#currentTabTitlePlaceholder').html($tabTitle.clone().show());
-				$tabTitle.hide();
-			}
 		});
 	}
 
