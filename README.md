@@ -1,3 +1,3 @@
 delicate-dugong
 ===============
-Example of work
+A front-end coding exercise.
