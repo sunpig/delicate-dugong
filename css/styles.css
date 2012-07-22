@@ -91,7 +91,7 @@ a {
  	top:2px;
  	width:9px;
  	height:12px;
- 	background:url(../img/icons.png) no-repeat 0 0;
+ 	background:url(../img/icons.gif) no-repeat 0 0;
  	border-bottom:none;
  }
  .delta-bad .up {
@@ -425,7 +425,7 @@ Behaviour:
 		display:inline-block;
 		width:9px;
 		height:12px;
-		background:url(../img/icons.png) no-repeat 0 -115px;
+		background:url(../img/icons.gif) no-repeat 0 -115px;
 		margin-left:3px;
 	}
 }
