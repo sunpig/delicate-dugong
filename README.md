@@ -2,8 +2,8 @@
 A front-end coding exercise.
 
 ## The brief
-* [Description](https://sunpig.github.com/delicate-dugong/brief/brief.txt)
-* [Reference screenshot](https://sunpig.github.com/delicate-dugong/brief/screenshot.png)
+* [Description](http://sunpig.github.com/delicate-dugong/brief/brief.txt)
+* [Reference screenshot](http://sunpig.github.com/delicate-dugong/brief/screenshot.png)
 
 ## Implementation notes
 * Added responsive elements for small screens:
