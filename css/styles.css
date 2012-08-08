@@ -416,7 +416,11 @@ Behaviour:
 }
 
 /*** Responsive ***/
-@media all and (max-width:640px) {
+@media all and (max-width:680px) { 
+	/* TODO: Should be using a different solution here (not a naive pixel-based media query), 
+	   because the breakpoint depends on the width of the *text content*, which might 
+	   change (e.g. in a different language)
+	*/
 	.tab-trigger-skin-alpha .tab-triggers-strip li.js-dormant {
 		display:none;
 	}
